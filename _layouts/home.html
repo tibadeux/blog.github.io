@@ -23,19 +23,19 @@ layout: base
     {%- endif -%}
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
-      <li>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.minima.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
+<div class="post-cards">
+  {% for post in site.posts %}
+    <div class="card">
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+      {% endif %}
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+      <p>{{ post.excerpt }}</p>
+      <a href="{{ post.url }}" class="read-more">Leer más →</a>
+    </div>
+  {% endfor %}
+</div>
     </ul>
 
     {% if site.paginate %}
