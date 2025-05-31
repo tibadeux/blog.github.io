@@ -109,3 +109,4 @@ plugins:
 
 baseurl: "/blog.github.io"
 url: "https://tibadeux.github.io" 
+permalink: /:year/:month/:day/:title/
