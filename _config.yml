@@ -106,3 +106,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-gist
+
+baseurl: "/blog.github.io"
+url: "https://tibadeux.github.io" 
