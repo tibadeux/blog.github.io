@@ -1,7 +1,7 @@
 ---
 layout: base
 ---
-
+<!--
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
@@ -64,4 +64,102 @@ layout: base
       </div>
     {%- endif %}
   {%- endif -%}
+</div>
+-->
+
+
+
+<                                              tg                 div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  <!-- Sección: Programación -->
+  <section class="section">
+    <h2>📚 Programación</h2>
+    <div class="post-cards">
+      {% for post in site.posts %}
+        {% if post.tags contains "programación" or post.tags contains "javascript" or post.tags contains "python" %}
+          <div class="card">
+            {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            {% endif %}
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Sección: Diseño -->
+  <section class="section">
+    <h2>🎨 Diseño</h2>
+    <div class="post-cards">
+      {% for post in site.posts %}
+        {% if post.tags contains "diseño" or post.tags contains "ui" or post.tags contains "ux" %}
+          <div class="card">
+            {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            {% endif %}
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Sección: Tutoriales -->
+  <section class="section">
+    <h2>📘 Tutoriales</h2>
+    <div class="post-cards">
+      {% for post in site.posts %}
+        {% if post.tags contains "tutorial" %}
+          <div class="card">
+            {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+            {% endif %}
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Leer más →</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Paginación -->
+  {% if site.paginate %}
+    <div class="pager">
+      <ul class="pagination">
+        {%- if paginator.previous_page %}
+          <li>
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page" title="Go to Page {{ paginator.previous_page }}">
+              {{ paginator.previous_page }}
+            </a>
+          </li>
+        {%- else %}
+          <li><div class="pager-edge">•</div></li>
+        {%- endif %}
+        <li><div class="current-page">{{ paginator.page }}</div></li>
+        {%- if paginator.next_page %}
+          <li>
+            <a href="{{ paginator.next_page_path | relative_url }}" class="next-page" title="Go to Page {{ paginator.next_page }}">
+              {{ paginator.next_page }}
+            </a>
+          </li>
+        {%- else %}
+          <li><div class="pager-edge">•</div></li>
+        {%- endif %}
+      </ul>
+    </div>
+  {% endif %}
 </div>
